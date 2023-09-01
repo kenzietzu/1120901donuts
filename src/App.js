@@ -2,21 +2,37 @@ import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Works from "./components/Works";
 import GlobalStyles from "./GlobalStyles";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import useLocoScroll from "./components/useLocoScroll";
+import ScrollTriggerProxy from "./components/ScrollTriggerProxy";
+import { useRef } from "react";
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 function App() {
-  useLocoScroll(true);
+  // useLocoScroll(true);
+  const containerRef = useRef(null);
 
   return (
     <>
       <GlobalStyles />
-      <main className="App" data-scroll-container>
-        <Header />
-        <Works />
-        <Contact />
-      </main>
+      <LocomotiveScrollProvider
+        options={{
+          smooth: true,
+          smartphone: {
+            smooth: true,
+          },
+          tablet: {
+            smooth: true,
+          },
+        }}
+        watch={[]}
+        containerRef={containerRef}
+      >
+        <main className="App" data-scroll-container ref={containerRef}>
+          <ScrollTriggerProxy />
+          <Header />
+          <Works />
+          <Contact />
+        </main>
+      </LocomotiveScrollProvider>
     </>
   );
 }

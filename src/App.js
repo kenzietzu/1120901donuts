@@ -4,37 +4,41 @@ import Header from "./components/Header";
 import Works from "./components/Works";
 import GlobalStyles from "./GlobalStyles";
 import ScrollTriggerProxy from "./components/ScrollTriggerProxy";
-import useLocoScroll from "./components/useLocoScroll";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import gsap from "gsap";
+// import useLocoScroll from "./components/useLocoScroll";
 // import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 function App() {
-  useLocoScroll();
-  const containerRef = useRef(null);
+  // useLocoScroll();
+  const lenisRef = useRef(null);
+  const lenis = useLenis(({ scroll }) => {
+    // called every scroll
+  });
+
+  useEffect(() => {
+    function update(time) {
+      lenisRef.current?.raf(time * 1000);
+    }
+
+    gsap.ticker.add(update);
+
+    return () => {
+      gsap.ticker.remove(update);
+    };
+  });
 
   return (
     <>
       <GlobalStyles />
-      {/* <LocomotiveScrollProvider
-        options={{
-          smooth: true,
-          smartphone: {
-            smooth: true,
-          },
-          tablet: {
-            smooth: true,
-          },
-        }}
-        watch={[]}
-        containerRef={containerRef}
-      > */}
-      <main className="App" data-scroll-container ref={containerRef}>
+
+      <ReactLenis root ref={lenisRef} autoRaf={false}>
         <ScrollTriggerProxy />
         <Header />
         <Works />
         <Contact />
-      </main>
-      {/* </LocomotiveScrollProvider> */}
+      </ReactLenis>
     </>
   );
 }

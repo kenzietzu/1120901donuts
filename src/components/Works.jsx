@@ -1,6 +1,6 @@
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
+import React, { useRef, useLayoutEffect } from "react";
 import styled from "styled-components";
 
 const Section = styled.section`

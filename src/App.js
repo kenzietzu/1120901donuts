@@ -6,8 +6,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import useLocoScroll from "./components/useLocoScroll";
 
-gsap.registerPlugin(ScrollTrigger);
-
 function App() {
   useLocoScroll(true);
 

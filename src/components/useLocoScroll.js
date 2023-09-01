@@ -3,22 +3,24 @@ import LocomotiveScroll from "locomotive-scroll";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-const useLocoScroll = (start) => {
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
+const useLocoScroll = (start) => {
   useEffect(() => {
     if (!start) return;
+    let locoScroll = null;
 
     const scrollEl = document.querySelector(".App");
 
-    let locoScroll = new LocomotiveScroll({
+    locoScroll = new LocomotiveScroll({
       el: scrollEl,
       smooth: true,
       multiplier: 1.5,
-      class: "hello",
     });
 
-    locoScroll.on("scroll", ScrollTrigger.update);
+    locoScroll.on("scroll", () => {
+      ScrollTrigger.update();
+    });
 
     ScrollTrigger.scrollerProxy(scrollEl, {
       scrollTop(value) {
@@ -29,14 +31,14 @@ const useLocoScroll = (start) => {
         }
         return null;
       },
-      scrollLeft(value) {
-        if (locoScroll) {
-          return arguments.length
-            ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-            : locoScroll.scroll.instance.scroll.x;
-        }
-        return null;
-      },
+      // scrollLeft(value) {
+      //   if (locoScroll) {
+      //     return arguments.length
+      //       ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+      //       : locoScroll.scroll.instance.scroll.x;
+      //   }
+      //   return null;
+      // },
       getBoundingClientRect() {
         return {
           top: 0,
@@ -57,6 +59,15 @@ const useLocoScroll = (start) => {
     ScrollTrigger.addEventListener("refresh", lsUpdate);
     ScrollTrigger.defaults({ scroller: scrollEl });
     ScrollTrigger.refresh();
+
+    // return () => {
+    //   if (locoScroll) {
+    //     ScrollTrigger.removeEventListener("refresh", lsUpdate);
+    //     locoScroll.destroy();
+    //     locoScroll = null;
+    //     console.log("Kill", locoScroll);
+    //   }
+    // };
   }, [start]);
 };
 

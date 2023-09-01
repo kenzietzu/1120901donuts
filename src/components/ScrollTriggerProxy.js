@@ -3,9 +3,10 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import { useEffect } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const ScrollTriggerProxy = () => {
   const { scroll } = useLocomotiveScroll();
-  gsap.registerPlugin(ScrollTrigger);
 
   useEffect(() => {
     if (scroll) {

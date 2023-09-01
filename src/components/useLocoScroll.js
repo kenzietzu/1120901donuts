@@ -29,14 +29,14 @@ const useLocoScroll = (start) => {
         }
         return null;
       },
-      //   scrollLeft(value) {
-      //     if (locoScroll) {
-      //       return arguments.length
-      //         ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
-      //         : locoScroll.scroll.instance.scroll.x;
-      //     }
-      //     return null;
-      //   },
+      scrollLeft(value) {
+        if (locoScroll) {
+          return arguments.length
+            ? locoScroll.scrollTo(value, { duration: 0, disableLerp: true })
+            : locoScroll.scroll.instance.scroll.x;
+        }
+        return null;
+      },
       getBoundingClientRect() {
         return {
           top: 0,

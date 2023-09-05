@@ -42,8 +42,8 @@ function Header() {
   });
 
   const chars = gsap.utils.toArray(".word");
+  const tl = gsap.timeline();
   chars.forEach((e, i) => {
-    const tl = gsap.timeline();
     tl.fromTo(
       e,
       { opacity: 1, yPercent: 80 },

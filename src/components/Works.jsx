@@ -100,6 +100,10 @@ const W3 = styled(W1)`
   z-index: 1;
 `;
 
+const TitleWrapper = styled.div`
+  overflow: hidden;
+`;
+
 const Words = styled.div`
   padding: 100px 50px;
   h1 {
@@ -117,6 +121,7 @@ const Works = () => {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
+      //content animation
       gsap.set("#www", { yPercent: 0 });
       gsap.set(leftRef.current, { backgroundColor: "#ffede0" });
       const animeR = gsap.to("#www", {
@@ -150,21 +155,26 @@ const Works = () => {
         end: "bottom bottom",
         scrub: true,
       });
-
+      //bgcolor animation
       const mobileContent = gsap.utils.toArray(".mContent");
       const bgColor = ["#ffe4d3", "#dfeed7", "#e7e0eb"];
       mobileContent.forEach((e, i) => {
         gsap.set(e, { backgroundColor: bgColor[i] });
       });
-
+      //title animation
       const titles = gsap.utils.toArray("h1");
-      const parents = gsap.utils.toArray(".dContent");
       titles.forEach((e, i) => {
-        gsap.from(e, {
-          scrollTrigger: e,
-          yPercent: -100,
-          opacity: 0,
-          delay: 0.5,
+        const titleTl = gsap.timeline({
+          scrollTrigger: {
+            trigger: e,
+            start: "top 70%",
+            // markers: true,
+            toggleActions: "restart none none none",
+          },
+        });
+        titleTl.from(e, {
+          yPercent: 110,
+          opacity: 1,
         });
       });
     }, sectionRef);
@@ -176,14 +186,18 @@ const Works = () => {
     <Section data-scroll-section id="container" ref={sectionRef}>
       <Left ref={leftRef}>
         <Content className="dContent">
-          <h1>MANDARIN ORANGE</h1>
+          <TitleWrapper>
+            <h1>MANDARIN ORANGE</h1>
+          </TitleWrapper>
           🍊 A Burst of Citrus Sunshine in Every Bite! 🍊 Prepare your taste
           buds for an extraordinary adventure with our Mandarin Orange Doughnut.
           Crafted with the perfect blend of sweet and tangy, this doughnut is a
           refreshing twist on a classic favorite.
         </Content>
         <Content className="dContent">
-          <h1>Our Story</h1>
+          <TitleWrapper>
+            <h1>Our Story</h1>
+          </TitleWrapper>
           Dough was founded in 2010 in Bedstuy, Brooklyn. What started as a
           neighborhood spot for morning treats quickly boomed. Dough Doughnuts
           became everyone's favorite doughnut both in Brooklyn and
@@ -191,7 +205,9 @@ const Works = () => {
           Flatiron district in 2015.
         </Content>
         <Content className="dContent">
-          <h1>HANDMADE</h1>
+          <TitleWrapper>
+            <h1>HANDMADE</h1>
+          </TitleWrapper>
           Dough's doughnuts are handmade with love and care. Our staff
           passionately mastered the craft of doughnut making through a hands-on
           approach that focuses on freshness and fullness of flavor. Dough's
@@ -210,7 +226,9 @@ const Works = () => {
         <Content className="mContent">
           <W1></W1>
           <Words>
-            <h1>MANDARIN ORANGE</h1>
+            <TitleWrapper>
+              <h1>MANDARIN ORANGE</h1>
+            </TitleWrapper>
             🍊 A Burst of Citrus Sunshine in Every Bite! 🍊 Prepare your taste
             buds for an extraordinary adventure with our Mandarin Orange
             Doughnut. Crafted with the perfect blend of sweet and tangy, this
@@ -220,7 +238,9 @@ const Works = () => {
         <Content className="mContent">
           <W2></W2>
           <Words>
-            <h1>Our Story</h1>
+            <TitleWrapper>
+              <h1>Our Story</h1>
+            </TitleWrapper>
             Dough was founded in 2010 in Bedstuy, Brooklyn. What started as a
             neighborhood spot for morning treats quickly boomed. Dough Doughnuts
             became everyone's favorite doughnut both in Brooklyn and
@@ -231,7 +251,9 @@ const Works = () => {
         <Content className="mContent">
           <W3></W3>
           <Words>
-            <h1>HANDMADE</h1>
+            <TitleWrapper>
+              <h1>HANDMADE</h1>
+            </TitleWrapper>
             Dough's doughnuts are handmade with love and care. Our staff
             passionately mastered the craft of doughnut making through a
             hands-on approach that focuses on freshness and fullness of flavor.

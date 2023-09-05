@@ -18,13 +18,17 @@ const Container = styled.div`
   width: 100vw;
   border-bottom-left-radius: 40px 40px;
   border-bottom-right-radius: 40px 40px;
+  color: #ffffff;
+  background-image: url(${headerImage});
+  background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #ffffff;
-  background-image: url(${headerImage});
-  background-size: cover;
+`;
+
+const Wrapper = styled.div`
+  overflow: hidden;
   h1 {
     font-size: 60px;
   }
@@ -38,11 +42,11 @@ function Header() {
   });
 
   const chars = gsap.utils.toArray(".word");
-  const tl = gsap.timeline();
   chars.forEach((e, i) => {
+    const tl = gsap.timeline();
     tl.fromTo(
       e,
-      { opacity: 0, yPercent: 50 },
+      { opacity: 1, yPercent: 80 },
       { opacity: 1, yPercent: 0, duration: 0.3 }
     );
   });
@@ -50,7 +54,9 @@ function Header() {
   return (
     <Section data-scroll-section>
       <Container>
-        <h1 data-splitting>WELCOME TO CHARLIE DONUTS</h1>
+        <Wrapper>
+          <h1 data-splitting>WELCOME TO CHARLIE DONUTS</h1>
+        </Wrapper>
       </Container>
     </Section>
   );

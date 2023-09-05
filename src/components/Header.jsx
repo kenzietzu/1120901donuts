@@ -55,7 +55,7 @@ function Header() {
     <Section data-scroll-section>
       <Container>
         <Wrapper>
-          <h1 data-splitting>WELCOME TO CHARLIE DONUTS</h1>
+          <h1 data-splitting>WELCOME TO CHARLIE'S DONUTS</h1>
         </Wrapper>
       </Container>
     </Section>

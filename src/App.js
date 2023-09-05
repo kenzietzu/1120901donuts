@@ -1,19 +1,16 @@
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
+import About from "./components/About";
 import Works from "./components/Works";
 import GlobalStyles from "./GlobalStyles";
-import ScrollTriggerProxy from "./components/ScrollTriggerProxy";
 import { useEffect, useRef } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import gsap from "gsap";
-// import useLocoScroll from "./components/useLocoScroll";
-// import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 
 function App() {
-  // useLocoScroll();
   const lenisRef = useRef(null);
-  const lenis = useLenis(({ scroll }) => {
+  useLenis(({ scroll }) => {
     // called every scroll
   });
 
@@ -32,10 +29,9 @@ function App() {
   return (
     <>
       <GlobalStyles />
-
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        <ScrollTriggerProxy />
         <Header />
+        <About />
         <Works />
         <Contact />
       </ReactLenis>

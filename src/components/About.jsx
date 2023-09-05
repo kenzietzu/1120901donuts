@@ -1,90 +1,65 @@
 import styled from "styled-components";
 import gsap from "gsap";
+import { useLayoutEffect, useRef } from "react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 const Section = styled.section`
   min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #ffe4d3;
   flex-direction: column;
-
-  span {
-    display: block;
-    font-size: 30px;
-    background-color: #e2e2e2;
-    color: #151515;
-    width: 100vw;
-    text-align: center;
-  }
+  justify-content: center;
 `;
 
+const Container = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const Title1 = styled.h1`
+  font-size: 70px;
+  position: relative;
+  /* left: 460px; */
+`;
+const Title2 = styled.h1`
+  font-size: 70px;
+  position: relative;
+  /* right: 460px; */
+`;
+
+gsap.registerPlugin(ScrollTrigger);
+
 const About = () => {
+  const aboutRef = useRef(null);
+  const title1Ref = useRef(null);
+  const title2Ref = useRef(null);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: aboutRef.current,
+          start: "top 40%",
+          scrub: true,
+          // markers: true,
+        },
+      });
+      tl.to(title1Ref.current, { x: "460px" }).to(
+        title2Ref.current,
+        { x: "-460px" },
+        0
+      );
+    }, aboutRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <Section data-scroll-section>
-      <h1>About Me</h1>
-      <h2>
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          I'm Charlie.
-        </span>
-      </h2>
-      <h2 data-scroll data-scroll-speed="-4">
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Taiwanese.
-        </span>
-      </h2>
-      <h2>
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Web Developer.
-        </span>
-      </h2>
-      <h2>
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Minimalist.
-        </span>
-      </h2>
-      <h2 data-scroll data-scroll-speed="6">
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Solo Traveler.
-        </span>
-      </h2>
-      <h2>
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Apple User.
-        </span>
-      </h2>
-      <h2>
-        <span
-          data-scroll
-          data-scroll-direction="horizontal"
-          data-scroll-speed={gsap.utils.random(-10, 10, 2)}
-        >
-          Full Sugar Bubble Tea Drinker.
-        </span>
-      </h2>
+    <Section data-scroll-section ref={aboutRef}>
+      <Title1 ref={title1Ref}>Discover</Title1>
+      <Container>
+        <Title2 ref={title2Ref}>Our Brand</Title2>
+      </Container>
     </Section>
   );
 };

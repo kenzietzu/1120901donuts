@@ -1,7 +1,6 @@
 import "locomotive-scroll/dist/locomotive-scroll.css";
 import Contact from "./components/Contact";
 import Header from "./components/Header";
-import About from "./components/About";
 import Works from "./components/Works";
 import GlobalStyles from "./GlobalStyles";
 import { useEffect, useRef } from "react";
@@ -31,7 +30,6 @@ function App() {
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
         <Header />
-        <About />
         <Works />
         <Contact />
       </ReactLenis>

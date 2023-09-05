@@ -2,29 +2,33 @@ import styled from "styled-components";
 import gsap from "gsap";
 import { useLayoutEffect, useRef } from "react";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { Canvas } from "@react-three/fiber";
+import { Environment, Float } from "@react-three/drei";
+import { Model } from "./Scene";
 
 const Section = styled.section`
-  min-height: 100vh;
+  height: 120vh;
   display: flex;
   background-color: #ffe4d3;
   flex-direction: column;
   justify-content: center;
 `;
 
-const Container = styled.div`
-  display: flex;
-  justify-content: flex-end;
+const Title1 = styled.h1`
+  font-size: 80px;
+  position: absolute;
+  z-index: 10;
+  color: #ff4f55;
+  padding-top: 400px;
 `;
 
-const Title1 = styled.h1`
-  font-size: 70px;
-  position: relative;
-  /* left: 460px; */
+const Title2 = styled(Title1)`
+  right: 0;
+  padding-top: 600px;
 `;
-const Title2 = styled.h1`
-  font-size: 70px;
-  position: relative;
-  /* right: 460px; */
+
+const Filler = styled.div`
+  height: 20vh;
 `;
 
 gsap.registerPlugin(ScrollTrigger);
@@ -56,10 +60,22 @@ const About = () => {
 
   return (
     <Section data-scroll-section ref={aboutRef}>
+      <Filler></Filler>
       <Title1 ref={title1Ref}>Discover</Title1>
-      <Container>
-        <Title2 ref={title2Ref}>Our Brand</Title2>
-      </Container>
+
+      <Title2 ref={title2Ref}>Our Donuts</Title2>
+
+      <Canvas>
+        <ambientLight />
+        <directionalLight />
+        <mesh>
+          <Float>
+            <Model aboutRef={aboutRef} />
+          </Float>
+          <Environment preset="sunset" />
+          {/* <OrbitControls /> */}
+        </mesh>
+      </Canvas>
     </Section>
   );
 };

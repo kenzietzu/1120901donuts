@@ -26,6 +26,11 @@ h1{
   font-size: 50px;
 }
 
+CANVAS {
+  width: 100vw;
+  height: 2000px;
+}
+
 html.lenis {
   height: auto;
 }

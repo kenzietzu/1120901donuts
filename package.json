@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-three/drei": "^9.82.0",
+    "@react-three/fiber": "^8.14.1",
     "@studio-freight/react-lenis": "^0.0.26",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@types/three": "^0.155.1",
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.16",
     "gsap": "^3.12.2",
@@ -19,6 +22,7 @@
     "react-scripts": "5.0.1",
     "splitting": "^1.0.6",
     "styled-components": "^5.3.11",
+    "three": "^0.156.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

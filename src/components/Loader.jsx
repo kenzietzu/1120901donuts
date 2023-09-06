@@ -32,7 +32,7 @@ const Loader = ({ setLoaded }) => {
     }, loaderRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [setLoaded]);
 
   return (
     <Section ref={loaderRef}>

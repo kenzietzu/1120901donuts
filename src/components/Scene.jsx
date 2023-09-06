@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/pink-donut-with-sprinkles-1f60fc80a83e46
 Title: Pink Donut with Sprinkles
 */
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";

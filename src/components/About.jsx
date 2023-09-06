@@ -46,7 +46,6 @@ const About = () => {
 
   useLayoutEffect(() => {
     const width = document.documentElement.clientWidth;
-    console.log(width);
     let ctx = gsap.context(() => {
       let tl = gsap.timeline({
         scrollTrigger: {

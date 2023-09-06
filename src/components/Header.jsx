@@ -45,20 +45,19 @@ function Header() {
   const aboutRef = useRef(null);
   Splitting({
     target: "[data-splitting]",
-    by: "chars",
-    key: null,
+    by: "words",
   });
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       //title animation
-      const chars = gsap.utils.toArray(".word");
-      const titleTl = gsap.timeline();
-      chars.forEach((e, i) => {
-        titleTl.fromTo(
+      const words = gsap.utils.toArray(".word");
+      let titleTl = gsap.timeline({ delay: 21 });
+      words.forEach((e) => {
+        titleTl.from(
           e,
-          { opacity: 1, yPercent: 80 },
-          { opacity: 1, yPercent: 0, duration: 0.3 }
+          { yPercent: 280, duration: 0.3, ease: "back.out" },
+          "-=0.2"
         );
       });
       //layout animation

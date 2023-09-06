@@ -57,7 +57,7 @@ export function Model() {
   }, [camera, scene.position, scene.rotation]);
 
   return (
-    <group dispose={null} scale={0.0035} rotation-x={Math.PI * 0.5}>
+    <group dispose={null} scale={0.0025} rotation-x={Math.PI * 0.5}>
       <group position={[-3.108, -1.718, 1.285]} rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group

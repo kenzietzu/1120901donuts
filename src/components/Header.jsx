@@ -34,6 +34,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   /* display: none; */
 `;
 
@@ -57,7 +58,7 @@ function Header() {
     let ctx = gsap.context(() => {
       //title animation
       const words = gsap.utils.toArray(".word");
-      let titleTl = gsap.timeline({ delay: 0 });
+      let titleTl = gsap.timeline({ delay: 22 });
       words.forEach((e) => {
         titleTl.from(
           e,

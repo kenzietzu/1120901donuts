@@ -15,13 +15,26 @@ const Section = styled.section`
   background-color: none;
   z-index: 100;
 `;
-const Container = styled.div`
+
+const Bg = styled.div`
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  background-color: #ffe4d3;
   height: 100vh;
   width: 100vw;
+  z-index: 100;
+`;
+
+const Container = styled.div`
+  width: 100%;
+  height: 98vh;
   border-bottom-left-radius: 40px 40px;
   border-bottom-right-radius: 40px 40px;
   color: #ffffff;
   background-image: url(${headerImage});
+  background-color: #ffe4d3;
   background-size: cover;
   position: absolute;
   z-index: 100;
@@ -52,7 +65,7 @@ function Header() {
     let ctx = gsap.context(() => {
       //title animation
       const words = gsap.utils.toArray(".word");
-      let titleTl = gsap.timeline({ delay: 21 });
+      let titleTl = gsap.timeline({ delay: 0 });
       words.forEach((e) => {
         titleTl.from(
           e,
@@ -80,11 +93,13 @@ function Header() {
 
   return (
     <Section ref={headerRef}>
-      <Container ref={containerRef}>
-        <Wrapper>
-          <h1 data-splitting>WELCOME TO CHARLIE'S DONUTS</h1>
-        </Wrapper>
-      </Container>
+      <Bg ref={containerRef}>
+        <Container>
+          <Wrapper>
+            <h1 data-splitting>WELCOME TO CHARLIE'S DONUTS</h1>
+          </Wrapper>
+        </Container>
+      </Bg>
       <About ref={aboutRef} />
     </Section>
   );

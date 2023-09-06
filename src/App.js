@@ -30,7 +30,7 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        <Loader />
+        {/* <Loader /> */}
         <Header />
         <Works />
         <Contact />

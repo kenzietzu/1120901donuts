@@ -28,7 +28,7 @@ const Loader = () => {
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
       let tl = gsap.timeline();
-      tl.to(".num", { innerText: 100, snap: "innerText", duration: 10 }).to(
+      tl.to(".num", { innerText: 100, snap: "innerText", duration: 20 }).to(
         loaderRef.current,
         { opacity: 0 }
       );

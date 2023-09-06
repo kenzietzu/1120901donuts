@@ -9,17 +9,11 @@ import { useLayoutEffect, useRef } from "react";
 
 const Section = styled.section`
   height: 120vh;
-  display: flex;
-  justify-content: center;
-  text-align: center;
   background-color: none;
   z-index: 100;
 `;
 
 const Bg = styled.div`
-  display: flex;
-  justify-content: center;
-  text-align: center;
   position: absolute;
   background-color: #ffe4d3;
   height: 100vh;
@@ -36,26 +30,24 @@ const Container = styled.div`
   background-image: url(${headerImage});
   background-color: #ffe4d3;
   background-size: cover;
-  position: absolute;
   z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   /* display: none; */
 `;
 
 const Wrapper = styled.div`
   overflow: hidden;
-  h1 {
-    font-size: 60px;
-  }
+`;
+
+const Title = styled.h1`
+  font-size: 60px;
 `;
 
 function Header() {
   const headerRef = useRef(null);
   const containerRef = useRef(null);
-  const aboutRef = useRef(null);
   Splitting({
     target: "[data-splitting]",
     by: "words",
@@ -69,10 +61,16 @@ function Header() {
       words.forEach((e) => {
         titleTl.from(
           e,
-          { yPercent: 280, duration: 0.3, ease: "back.out" },
+          { yPercent: 280, duration: 0.5, ease: "back.out" },
           "-=0.2"
         );
       });
+    }, headerRef);
+    return () => ctx.revert();
+  }, []);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
       //layout animation
       let layoutTL = gsap.timeline({
         scrollTrigger: {
@@ -80,7 +78,6 @@ function Header() {
           start: "top top",
           end: "bottom 50%",
           scrub: true,
-          pin: aboutRef.current,
           pinSpacer: true,
           toggleActions: "play none none reverse",
           // markers: true,
@@ -96,11 +93,11 @@ function Header() {
       <Bg ref={containerRef}>
         <Container>
           <Wrapper>
-            <h1 data-splitting>WELCOME TO CHARLIE'S DONUTS</h1>
+            <Title data-splitting>WELCOME TO CHARLIE'S DONUTS</Title>
           </Wrapper>
         </Container>
       </Bg>
-      <About ref={aboutRef} />
+      <About />
     </Section>
   );
 }

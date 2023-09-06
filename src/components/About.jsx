@@ -77,7 +77,7 @@ const About = () => {
         <directionalLight />
         <mesh>
           <Float>
-            <Model aboutRef={aboutRef} />
+            <Model />
           </Float>
           <Environment preset="sunset" />
           {/* <OrbitControls /> */}

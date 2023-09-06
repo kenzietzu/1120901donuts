@@ -15,10 +15,9 @@ import { useThree } from "@react-three/fiber";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Model(props) {
+export function Model() {
   const { nodes, materials } = useGLTF("/scene.gltf");
 
-  const groupRef = useRef(null);
   let camera = useThree((state) => state.camera);
   let scene = useThree((state) => state.scene);
 
@@ -48,22 +47,17 @@ export function Model(props) {
           tl.to(scene.rotation, { y: 3, z: 5 });
 
           if (isMobile) {
-            camera.fov = 100;
+            camera.fov = 80;
             camera.updateProjectionMatrix();
           }
         }
       );
-    }, props.aboutRef);
+    });
     return () => ctx.revert();
-  }, [camera, props.aboutRef, scene.position, scene.rotation]);
+  }, [camera, scene.position, scene.rotation]);
 
   return (
-    <group
-      ref={groupRef}
-      dispose={null}
-      scale={0.0025}
-      rotation-x={Math.PI * 0.5}
-    >
+    <group dispose={null} scale={0.0035} rotation-x={Math.PI * 0.5}>
       <group position={[-3.108, -1.718, 1.285]} rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group

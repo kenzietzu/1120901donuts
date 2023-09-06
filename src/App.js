@@ -6,6 +6,7 @@ import GlobalStyles from "./GlobalStyles";
 import { useEffect, useRef } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import gsap from "gsap";
+import Loader from "./components/Loader";
 
 function App() {
   const lenisRef = useRef(null);
@@ -29,6 +30,7 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
+        <Loader />
         <Header />
         <Works />
         <Contact />

@@ -183,7 +183,7 @@ const Works = () => {
   }, []);
 
   return (
-    <Section data-scroll-section id="container" ref={sectionRef}>
+    <Section id="container" ref={sectionRef}>
       <Left ref={leftRef}>
         <Content className="dContent">
           <TitleWrapper>

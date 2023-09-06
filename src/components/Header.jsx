@@ -80,7 +80,7 @@ function Header() {
   }, []);
 
   return (
-    <Section data-scroll-section ref={headerRef}>
+    <Section ref={headerRef}>
       <Container ref={containerRef}>
         <Wrapper>
           <h1 data-splitting>WELCOME TO CHARLIE'S DONUTS</h1>

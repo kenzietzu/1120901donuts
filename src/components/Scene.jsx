@@ -48,7 +48,7 @@ export function Model(props) {
           tl.to(scene.rotation, { y: 3, z: 5 });
 
           if (isMobile) {
-            camera.fov = 90;
+            camera.fov = 100;
             camera.updateProjectionMatrix();
           }
         }

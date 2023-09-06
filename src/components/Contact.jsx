@@ -14,6 +14,9 @@ const Section = styled.section`
     margin-top: 20px;
     text-align: center;
     line-height: 12px;
+    @media (max-width: 500px) {
+      line-height: 32px;
+    }
   }
   h1 {
     color: #fff;
@@ -48,7 +51,7 @@ const Contact = () => {
   }, []);
 
   return (
-    <Section data-scroll-section ref={contactRef}>
+    <Section ref={contactRef}>
       <h1 className="contactTitle">Contact Us</h1>
       <h2>We love hearing from you!</h2>
       <h2>Reach out to us at info@charliesdonuts.com</h2>

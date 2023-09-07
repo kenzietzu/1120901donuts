@@ -2,7 +2,7 @@ import "splitting/dist/splitting.css";
 import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 import styled from "styled-components";
-import headerImage from "../assets/donuts1.webp";
+import headerImage from "../assets/header.webp";
 import gsap from "gsap";
 import About from "./About";
 import { useLayoutEffect, useRef } from "react";

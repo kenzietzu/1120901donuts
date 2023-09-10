@@ -22,20 +22,17 @@ const Section = styled.section`
   }
 `;
 
-const Loader = ({ setLoaded }) => {
+const Loader = () => {
   const loaderRef = useRef(null);
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      let tl = gsap
-        .timeline
-        // { onComplete: () => setLoaded(true) }
-        ();
+      let tl = gsap.timeline();
       tl.to(".num", { innerText: 100, snap: "innerText", duration: 20 });
     }, loaderRef);
 
     return () => ctx.revert();
-  }, [setLoaded]);
+  }, []);
 
   return (
     <Section ref={loaderRef}>

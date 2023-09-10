@@ -7,11 +7,8 @@ import { Suspense, useEffect, useRef } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import gsap from "gsap";
 import Loader from "./components/Loader";
-import { useState } from "react";
 
 function App() {
-  const [isLoaded, setLoaded] = useState(false);
-
   const lenisRef = useRef(null);
   useLenis(({ scroll }) => {
     // called every scroll
@@ -33,14 +30,6 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        {/* {!isLoaded && <Loader setLoaded={setLoaded} />}
-        {isLoaded && (
-          <>
-            <Header />
-            <Works />
-            <Contact />
-          </>
-        )} */}
         <>
           <Suspense fallback={<Loader />}>
             <Header />

@@ -13,7 +13,6 @@ const Section = styled.section`
   flex-direction: column;
   justify-content: center;
 `;
-
 const Title1 = styled.h1`
   font-size: 80px;
   position: absolute;
@@ -25,14 +24,12 @@ const Title1 = styled.h1`
     padding-top: 450px;
   }
 `;
-
 const Title2 = styled(Title1)`
   right: 0;
   padding-top: 600px;
   @media (max-width: 500px) {
   }
 `;
-
 const Filler = styled.div`
   height: 20vh;
 `;

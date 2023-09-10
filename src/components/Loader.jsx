@@ -27,7 +27,10 @@ const Loader = ({ setLoaded }) => {
 
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      let tl = gsap.timeline({ onComplete: () => setLoaded(true) });
+      let tl = gsap
+        .timeline
+        // { onComplete: () => setLoaded(true) }
+        ();
       tl.to(".num", { innerText: 100, snap: "innerText", duration: 20 });
     }, loaderRef);
 

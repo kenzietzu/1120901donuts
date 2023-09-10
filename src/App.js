@@ -3,7 +3,7 @@ import Contact from "./components/Contact";
 import Header from "./components/Header";
 import Works from "./components/Works";
 import GlobalStyles from "./GlobalStyles";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import gsap from "gsap";
 import Loader from "./components/Loader";
@@ -33,14 +33,21 @@ function App() {
     <>
       <GlobalStyles />
       <ReactLenis root ref={lenisRef} autoRaf={false}>
-        {!isLoaded && <Loader setLoaded={setLoaded} />}
+        {/* {!isLoaded && <Loader setLoaded={setLoaded} />}
         {isLoaded && (
           <>
             <Header />
             <Works />
             <Contact />
           </>
-        )}
+        )} */}
+        <>
+          <Suspense fallback={<Loader />}>
+            <Header />
+            <Works />
+            <Contact />
+          </Suspense>
+        </>
       </ReactLenis>
     </>
   );
